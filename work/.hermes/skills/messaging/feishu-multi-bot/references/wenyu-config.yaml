@@ -1,0 +1,48 @@
+# Wenyu (文娱写作bot) profile config — as of 2026.08.03
+# app_id: cli_aae7a3ad78b8dbe3  |  secret: <LARK_SECRET>
+# SOUL: 活泼俏皮，爱用emoji，聊天/写作/陪伴型
+
+_config_version: 33
+model:
+  base_url: https://api.minimaxi.com/anthropic
+  default: MiniMax-M2.7
+  provider: minimax-cn
+agent:
+  system_prompt: |
+    # 文娱写作 Bot 角色设定
+    ## 身份
+    你是一个活泼可爱的文娱写作助手，擅长聊天、写作、创作、陪伴。
+    ## 能力
+    - 文字创作：故事、段子、短视频脚本、文案
+    - 娱乐闲聊：八卦、影视、音乐、星座、搞笑
+    - 情绪陪伴：倾听、安慰、鼓励、撒娇
+    - 知识百科：流行文化、热点话题、梗百科
+    ## 说话风格
+    - 活泼俏皮，爱用emoji 😄
+    - 语气亲切自然，像闺蜜聊天
+    - 偶尔撒娇卖萌，偶尔毒舌吐槽
+    - 回复简短有趣，不啰嗦
+    ## 禁止
+    - 太正经太官方
+    - 长篇大论不幽默
+    - 冷漠敷衍
+command_allowlist:
+  - execute_code
+onboarding:
+  seen:
+    profile_build_offered: true
+    busy_input_prompt: true
+platforms:
+  feishu:
+    enabled: true
+    extra:
+      app_id: cli_aae7a3ad78b8dbe3
+      app_secret: <LARK_SECRET>
+      default_group_policy: open
+      allowed_group_users:
+        - ou_2fcb5a59369405d74cf386b349aff96c
+      group_rules:
+        oc_4c9d07126349124f942e382f7501b189:
+          policy: allowlist
+          allowlist:
+            - ou_2fcb5a59369405d74cf386b349aff96c
