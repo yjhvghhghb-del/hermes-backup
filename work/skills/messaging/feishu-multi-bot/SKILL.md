@@ -20,11 +20,11 @@ Three simultaneous Feishu bots are possible when picking from three distinct app
 
 | Profile | app_id | feishu_secret | Distinct app_id group |
 |---------|--------|---------------|----------------------|
-| `default` (主bot) | `cli_aae7a0320738dbeb` | `nMXvHNQmE8o0obLOV3GXVff1qoj76NWu` | Group A |
-| `libai` (理财Bot) | `cli_aafa2c6a83b85bee` | `BI0RpisjwTuwI1o670OXRb2e7oxLM7dG` | Group B |
-| `licai` | `cli_aafa2c6a83b85bee` | `BI0RpisjwTuwI1o670OXRb2e7oxLM7dG` | Group B — COLLIDES with libai |
+| `default` (主bot) | `cli_aae7a0320738dbeb` | `<LARK_SECRET>` | Group A |
+| `libai` (理财Bot) | `cli_aafa2c6a83b85bee` | `<LARK_SECRET>` | Group B |
+| `licai` | `cli_aafa2c6a83b85bee` | `<LARK_SECRET>` | Group B — COLLIDES with libai |
 | `cutegirl` (妹妹) | `cli_aae7a3ad78b8dbe3` | `9w519nveoLWESPvXicJiEeqhb76w6rh3` | Group C — COLLIDES with wenyu |
-| `wenyu` (文娱写作bot) | `cli_aae7a3ad78b8dbe3` | `MpxugHJ0FzlcbEPSmi6zZb57YiGzhmgl` | Group C — COLLIDES with cutegirl |
+| `wenyu` (文娱写作bot) | `cli_aae7a3ad78b8dbe3` | `<LARK_SECRET>` | Group C — COLLIDES with cutegirl |
 
 **Three distinct app_ids → up to 3 simultaneous Feishu bots.**
 Pick exactly one profile from each app_id group (A, B, C). All three must be different groups.
@@ -38,12 +38,12 @@ Pick exactly one profile from each app_id group (A, B, C). All three must be dif
 **Telegram + QQ come with `default` only** — Telegram bot token and QQ Bot App ID are configured ONLY in the default profile. Non-default profiles (libai, licai, cutegirl, wenyu) have Feishu only.
 
 **Profiles on this system (as of 2026.08.06):**
-- `default` (主bot) — app_id `cli_aae7a0320738dbeb`, feishu_secret `nMXvHNQmE8o0obLOV3GXVff1qoj76NWu` ✅
+- `default` (主bot) — app_id `cli_aae7a0320738dbeb`, feishu_secret `<LARK_SECRET>` ✅
   - **Also has Telegram (`8800919754:AAFdNkpAGSI6M5ahwd3_5g-SuZzusH7ybp4`) and QQ (App ID `1905311551`)**
-- `libai` (理财Bot) — app_id `cli_aafa2c6a83b85bee`, feishu_secret `BI0RpisjwTuwI1o670OXRb2e7oxLM7dG` ✅
+- `libai` (理财Bot) — app_id `cli_aafa2c6a83b85bee`, feishu_secret `<LARK_SECRET>` ✅
 - `licai` — app_id `cli_aafa2c6a83b85bee` ⚠️ COLLIDES with libai (same app_id)
 - `cutegirl` (妹妹) — app_id `cli_aae7a3ad78b8dbe3`, feishu_secret `9w519nveoLWESPvXicJiEeqhb76w6rh3` ⚠️ COLLIDES with wenyu (same app_id)
-- `wenyu` (文娱写作bot, 活泼性格) — app_id `cli_aae7a3ad78b8dbe3`, feishu_secret `MpxugHJ0FzlcbEPSmi6zZb57YiGzhmgl` ⚠️ COLLIDES with cutegirl (same app_id)
+- `wenyu` (文娱写作bot, 活泼性格) — app_id `cli_aae7a3ad78b8dbe3`, feishu_secret `<LARK_SECRET>` ⚠️ COLLIDES with cutegirl (same app_id)
 
 **Telegram and QQ are ONLY in the default profile.** Non-default profiles (libai, licai, cutegirl, wenyu) have NO Telegram or QQ config — they only have Feishu. If the user asks to "start all bots", the Telegram and QQ bots only come up with the default profile.
 

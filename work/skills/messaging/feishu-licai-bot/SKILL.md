@@ -9,7 +9,7 @@ tags: [feishu, licai, libai, 理财]
 ## 基本信息
 - **Profile**: `~/.hermes/profiles/libai/`（之前误名为 licai，实际目录是 libai）
 - **App ID**: `cli_aafa2c6a83b85bee`
-- **App Secret**: `BI0RpisjwTuwI1o670OXRb2e7oxLM7dG`
+- **App Secret**: `<LARK_SECRET>`
 - **Gateway**: `HERMES_HOME=~/.hermes/profiles/libai hermes gateway run`
 - **日志**: `~/.hermes/profiles/libai/logs/gateway.log`
 

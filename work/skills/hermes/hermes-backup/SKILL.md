@@ -86,7 +86,7 @@ GitHub push protection scans every commit **before** acceptance, even on public 
 | Type | Example | Detection rule |
 |------|---------|----------------|
 | GitHub PATs | `GH_PAT_REDACTED` | `ghp_` + 36 alphanumeric |
-| Lark/Feishu secrets | `nMXvHNQmE8o0obLOV3GXVff1qoj76NWu` | 32-char base58-like string |
+| Lark/Feishu secrets | `<LARK_SECRET>` | 32-char base58-like string |
 | Other long tokens | `9w519nveoLWESPvXicJiEeqhb76w6rh3` | 30+ char alphanumeric |
 
 **Pre-commit redaction (BEFORE tarring):**
@@ -94,9 +94,9 @@ GitHub push protection scans every commit **before** acceptance, even on public 
 ```python
 secrets = [
     ('ghp_FULL_TOKEN_HERE', '<PAT_REDACTED>'),
-    ('nMXvHNQmE8o0obLOV3GXVff1qoj76NWu', '<LARK_SECRET_1>'),
-    ('BI0RpisjwTuwI1o670OXRb2e7oxLM7dG', '<LARK_SECRET_2>'),
-    ('MpxugHJ0FzlcbEPSmi6zZb57YiGzhmgl', '<LARK_SECRET_3>'),
+    ('<LARK_SECRET>', '<LARK_SECRET_1>'),
+    ('<LARK_SECRET>', '<LARK_SECRET_2>'),
+    ('<LARK_SECRET>', '<LARK_SECRET_3>'),
 ]
 for old, new in secrets:
     content = content.replace(old, new)
@@ -104,7 +104,7 @@ for old, new in secrets:
 
 **Key rules:**
 1. Redact BEFORE tarring — never after, as the secret is already in the tar.gz
-2. `ghp_MR...geF1` (with `...` in middle) is STILL detected — use completely different placeholder strings like `<PAT_REDACTED>`
+2. `<PAT_REDACTED>` (with `...` in middle) is STILL detected — use completely different placeholder strings like `<PAT_REDACTED>`
 3. Always check: `MEMORY.md`, `USER.md`, any `SKILL.md` with credentials, `config.yaml` files
 
 ## ⚠️ Pitfall: Embedded `.git` Directories
