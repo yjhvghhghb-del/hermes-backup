@@ -41,6 +41,12 @@ tar -tzf hermes-backup-daily.tar.gz | grep -q '^\.hermes/knowledge' \
 # 2. 进入备份仓库
 cd ~/hermes-backup
 
+# 2b. 加大 http.postBuffer —— tar ~75MB 超过 git 默认 1MB buffer，
+#     push 会中途断连 (unable to rewind rpc post data / curl 65)
+git config --local http.postBuffer 524288000
+git config --local http.lowSpeedLimit 1000
+git config --local http.lowSpeedTime 300
+
 # 3. 清理嵌入式 .git 目录（避免 embedded repo warnings）
 find work/.hermes -name ".git" -type d 2>/dev/null | while read d; do
   rm -rf "$d"
