@@ -20,12 +20,23 @@ done
 [ -d .hermes/hermes-agent/skills ] && TAR_SRCS="$TAR_SRCS .hermes/hermes-agent/skills"
 [ -d .hermes/knowledge/skills ] && TAR_SRCS="$TAR_SRCS .hermes/knowledge/skills"
 
+# NOTE: tar exits 2 with "file changed as we read it" when a source dir is
+# written concurrently (e.g. skills updated mid-run). That is benign — the
+# archive is still valid — but `set -e` would abort the whole script before
+# the git steps. Hence: run tar without aborting on its exit code, but still
+# fail hard if the archive is missing or empty.
 tar -czf hermes-backup-daily.tar.gz \
   --exclude='knowledge/我是老公/.git' \
   --exclude='knowledge/我是老公/.git/**' \
   --exclude='*/.git' \
   --exclude='*/.git/*' \
-  $TAR_SRCS
+  $TAR_SRCS || echo "WARN: tar exit=$? (file changed as we read it)"
+
+[ -s hermes-backup-daily.tar.gz ] || { echo "ERROR: tar produced no archive"; exit 1; }
+# Stronger guard: a failed tar can leave a tiny stub that passes `-s`.
+# Require real entries, e.g. the knowledge tree.
+tar -tzf hermes-backup-daily.tar.gz | grep -q '^\.hermes/knowledge' \
+  || { echo "ERROR: archive has no .hermes/knowledge entries"; exit 1; }
 
 # 2. 进入备份仓库
 cd ~/hermes-backup
